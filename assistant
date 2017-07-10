@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+echo "Welcome to VP Technologies!"
+echo "Installing node dependencies..."
+npm install
+echo "Starting async postgres instance ..."
+if [[ "$OS" == 'Linux' ]]; then
+    postgres -D /var/lib/postgres/data &
+else 
+    postgres -D /usr/local/var/postgres/ &
+fi
+
+while true
+do
+    response=$(psql -t  -c "select now()" vpassistant)
+    if [[ $? == 0 ]] ; then
+    echo "DB connection established"
+    break
+    fi
+done 
+
+echo "Dropping and recreating db..."
+psql -f scripts/initdb.sql
+nodemon app.js
