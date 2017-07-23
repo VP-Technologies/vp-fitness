@@ -11,11 +11,22 @@ const version = "1.0.0 BETA";
 // Port for the server to run on
 const webPort = 3000;
 
+// URI of the PotgreSQL database
+const dbUri = "postgres://cdorijrhpwkonl:59d7a61726defa3de5d21a24d0541e4002b667c16d7a970431388bfeef42d65d@ec2-54-235-123-159.compute-1.amazonaws.com:5432/dov29q0cnq2q5";
+
 // Port that the database is running on
 const dbPort = 5432;
 
 // The name of the database
 const dbName = 'vpfit';
+
+var dev = true;
+var db = "";
+if (dev) {
+    db = 'postgres://localhost:'+ dbPort +'/' + dbName;
+} else {
+    db = 'postgres://cdorijrhpwkonl:59d7a61726defa3de5d21a24d0541e4002b667c16d7a970431388bfeef42d65d@ec2-54-235-123-159.compute-1.amazonaws.com:5432/dov29q0cnq2q5';
+}
 
 // Database configuration options
 const dbOptions = {
@@ -41,8 +52,10 @@ module.exports = {
     banner: ascii_banner,
     webPort: webPort,
     dbName: dbName,
+    dbUri: dbUri,
     dbPort: dbPort,
     dbOptions: dbOptions,
+    db: db,
     client_id: client_id,
     client_secret: client_secret
 }

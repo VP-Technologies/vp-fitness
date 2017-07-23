@@ -19,7 +19,7 @@ const bcrypt  = require('bcrypt');
 // LOGIC / QUERY FUNCTIONS ----------------------------------------------------
 
 var pgp = require('pg-promise')(c.dbOptions);
-var connectionString = 'postgres://localhost:'+ c.dbPort +'/' + c.dbName;
+var connectionString = c.db;
 var db = pgp(connectionString);
 
 // ----------------------------------------------------------------------------
