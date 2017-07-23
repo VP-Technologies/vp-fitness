@@ -1,16 +1,18 @@
 --
 -- This file essentially contains all of the Schemas for our database
-__
+--
 
-DROP DATABASE IF EXISTS vpassistant;
-CREATE DATABASE vpassistant;
+DROP DATABASE IF EXISTS vpfit;
+CREATE DATABASE vpfit;
 
-\c vpassistant;
+\c vpfit;
 
 CREATE TABLE users (
   id SERIAL,
   username VARCHAR PRIMARY KEY,
   email VARCHAR,
+  active BOOLEAN,
+  created TIMESTAMP without time zone,
   password VARCHAR
 );
 

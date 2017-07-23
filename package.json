@@ -1,20 +1,20 @@
 {
-  "name": "assistant-server",
+  "name": "vpfit-server",
   "version": "1.0.0",
-  "description": "Server for the VP Technologies assistant platform.",
+  "description": "Server for the VP Technologies fitness platform.",
   "main": "app.js",
   "scripts": {
     "preinstall": "npm i -g nodemon"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VP-Technologies/assistant-server.git"
+    "url": "git+https://github.com/VP-Technologies/vp-fitness-server.git"
   },
   "author": "VP Technologies",
   "bugs": {
-    "url": "https://github.com/VP-Technologies/assistant-server/issues"
+    "url": "https://github.com/VP-Technologies/vp-fitness-server/issues"
   },
-  "homepage": "https://github.com/VP-Technologies/assistant-server/issues#readme",
+  "homepage": "https://github.com/VP-Technologies/vp-fitness-server",
   "dependencies": {
     "bcrypt": "^0.8.7",
     "bluebird": "^3.5.0",

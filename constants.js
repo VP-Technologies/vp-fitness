@@ -15,7 +15,7 @@ const webPort = 3000;
 const dbPort = 5432;
 
 // The name of the database
-const dbName = 'vpassistant';
+const dbName = 'vpfit';
 
 // Database configuration options
 const dbOptions = {
@@ -29,11 +29,11 @@ const dbOptions = {
 // NOTE: If these are changed, then you will also need to update the
 // AuthService within the AngularJS frontend, within /public/js/app.js (to
 // include the new Base64 encoding of these objects -> id:secret)
-const client_id = "vpassistantwebapp";
+const client_id = "vpfitwebapp";
 const client_secret = "JBUY9VE69243BYC9024387HGVY3AQFK";
 
 // A sweet ascii banner for the console
-const ascii_banner = "\n _    ______     ____________________  ___   ______  __    ____  _____________________\n| |  / / __ \\   /_  __/ ____/ ____/ / / / | / / __ \\/ /   / __ \\/ ____/  _/ ____/ ___/\n| | / / /_/ /    / / / __/ / /   / /_/ /  |/ / / / / /   / / / / / __ / // __/  \\__ \\ \n| |/ / ____/    / / / /___/ /___/ __  / /|  / /_/ / /___/ /_/ / /_/ // // /___ ___/ / \n|___/_/        /_/ /_____/\\____/_/ /_/_/ |_/\\____/_____/\\____/\\____/___/_____//____/  \n                                                                                      \n"
+const ascii_banner = "$$\\    $$\\ $$$$$$$\\        $$$$$$$$\\ $$$$$$\\ $$$$$$$$\\ \r\n$$ |   $$ |$$  __$$\\       $$  _____|\\_$$  _|\\__$$  __|\r\n$$ |   $$ |$$ |  $$ |      $$ |        $$ |     $$ |   \r\n\\$$\\  $$  |$$$$$$$  |      $$$$$\\      $$ |     $$ |   \r\n \\$$\\$$  \/ $$  ____\/       $$  __|     $$ |     $$ |   \r\n  \\$$$  \/  $$ |            $$ |        $$ |     $$ |   \r\n   \\$  \/   $$ |            $$ |      $$$$$$\\    $$ |   \r\n    \\_\/    \\__|            \\__|      \\______|   \\__|   \r\n                                                       \r\n                                                       \r\n                                                       ";
 
 // Now let's export them so we can use em!
 module.exports = {

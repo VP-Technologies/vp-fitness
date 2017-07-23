@@ -11,7 +11,7 @@ fi
 
 while true
 do
-    response=$(psql -t  -c "select now()" vpassistant)
+    response=$(psql -t  -c "select now()" vpfit)
     if [[ $? == 0 ]] ; then
     echo "DB connection established"
     break
@@ -20,4 +20,6 @@ done
 
 echo "Dropping and recreating db..."
 psql -f scripts/initdb.sql
+echo "Inserting initial DB contents for debugging purposes"
+psql -f scripts/initdata.sql
 nodemon app.js

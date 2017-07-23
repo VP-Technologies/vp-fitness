@@ -2,7 +2,7 @@
 // is a PostgreSQL database.
 //
 // Written by Aaron Vontell (vontell)
-// Version 1.0.0 (July 9, 2017)
+// Version 1.0.0 (July 23, 2017)
 
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
