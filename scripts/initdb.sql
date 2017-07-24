@@ -10,10 +10,22 @@ CREATE DATABASE vpfit;
 CREATE TABLE users (
   id SERIAL,
   username VARCHAR PRIMARY KEY,
+  name VARCHAR,
   email VARCHAR,
   active BOOLEAN,
   created TIMESTAMP without time zone,
   password VARCHAR
+);
+
+CREATE TABLE userinfo (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR REFERENCES users (username),
+  age INTEGER,
+  weight DECIMAL,
+  height DECIMAL,
+  goal_weight DECIMAL,
+  difficulty INTEGER,
+  equipment INTEGER[]
 );
 
 --
