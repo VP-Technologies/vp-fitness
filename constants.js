@@ -40,6 +40,7 @@ const dbOptions = {
 // NOTE: If these are changed, then you will also need to update the
 // AuthService within the AngularJS frontend, within /public/js/app.js (to
 // include the new Base64 encoding of these objects -> id:secret)
+// Happens to be: dnBmaXR3ZWJhcHA6SkJVWTlWRTY5MjQzQllDOTAyNDM4N0hHVlkzQVFGSw==
 const client_id = "vpfitwebapp";
 const client_secret = "JBUY9VE69243BYC9024387HGVY3AQFK";
 

@@ -1,13 +1,8 @@
-// This file contains the unprotected api endpoints for the VP app
+// This file contains the protected api endpoints for the VP app
 //
 // Written by Aaron Vontell (vontell)
 // Version 1.0.0 (July 26, 2017)
 
-// MODULE DEPS ----------------------------------------------------------------
-// Incorporate all of our modules needed to run this thing
-//      ./constants - ports, naming, urls, logos, etc... Found in constants.js
-//      express - the actual web framework
-//      ./vpdb - code to access the db using pg-promise
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
 //      ./constants - ports, naming, urls, logos, etc... Found in constants.js
@@ -21,10 +16,14 @@ const db      = require('./vpdb');
 // OPEN ENDPOINTS ------------------------------------------------------------------
 
 var router = express.Router();
-var app = module.exports.app;
 
-// User creation routes
-router.get('/users', db.getAllUsers);
-router.post('/users', db.createUser);
+// User routes
+router.get('/users', db.getThisUser);
+router.patch('/users', db.updateThisUser);
+
+// User info routes (authenticated - users can only update their own info)
+router.get('/users/info', db.getUserInfo);
+router.post('/users/info', db.createUserInfo);
+router.patch('/users/info', db.updateUserInfo);
 
 module.exports = router;
