@@ -20,12 +20,12 @@ const dbPort = 5432;
 // The name of the database
 const dbName = 'vpfit';
 
-var dev = true;
 var db = "";
-if (dev) {
-    db = 'postgres://localhost:'+ dbPort +'/' + dbName;
+if (process.env.DATABASE_URL) {
+    db = process.env.DATABASE_URL;
+    webPort = 80;
 } else {
-    db = 'postgres://cdorijrhpwkonl:59d7a61726defa3de5d21a24d0541e4002b667c16d7a970431388bfeef42d65d@ec2-54-235-123-159.compute-1.amazonaws.com:5432/dov29q0cnq2q5';
+    db = 'postgres://localhost:'+ dbPort +'/' + dbName;
 }
 
 // Database configuration options

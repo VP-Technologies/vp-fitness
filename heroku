@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+echo "Welcome to VP Technologies!"
+echo "Installing node dependencies..."
+npm install
+echo "Dropping and recreating db..."
+psql -f scripts/initdb.sql
+echo "Inserting initial DB contents for debugging purposes"
+psql -f scripts/initdata.sql
+nodemon app.js
