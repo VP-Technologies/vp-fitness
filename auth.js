@@ -18,7 +18,7 @@ const vpdb    = require('./vpdb')
 const vplog   = require('./util/vplog')
 
 var pgp = require('pg-promise')(c.dbOptions);
-var connectionString = 'postgres://localhost:'+ c.dbPort +'/' + c.dbName;
+var connectionString = c.db;
 var pg = pgp(connectionString);
 
 // Returns information about the given access token
