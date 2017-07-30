@@ -9,11 +9,11 @@ CREATE DATABASE vpfit;
 
 CREATE TABLE users (
   id SERIAL,
-  username VARCHAR PRIMARY KEY,
-  name VARCHAR,
-  email VARCHAR,
-  active BOOLEAN,
-  created TIMESTAMP without time zone,
+  username VARCHAR PRIMARY KEY NOT NULL,
+  name VARCHAR NOT NULL,
+  email VARCHAR NOT NULL,
+  active BOOLEAN default true,
+  created TIMESTAMP without time zone default current_timestamp,
   password VARCHAR
 );
 

@@ -2,14 +2,14 @@
 // example from https://github.com/oauthjs/express-oauth-server/blob
 // /master/examples/postgresql/model.js
 //
-// Written by Aaron Vontell (vontell)
-// Version 1.0.0 (May 24, 2017)
+// Written by Aaron Vontell
+// Version 0.0.1 (July 26, 2017)
 
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
 //      ./constants - ports, naming, urls, logos, etc... Found in constants.js
 //      ./vpdb - code to access the db using pg-promise
-//      ./util/vplog - used for web logging
+//      ./util/vplog - used for VP-specific web logging
 //      pg-promise - bindings to our DB for user authentication and access 
 //                   token saving
 

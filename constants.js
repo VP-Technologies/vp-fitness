@@ -3,16 +3,16 @@
 // names and logos, etc...
 //
 // Created by Aaron Vontell (vontell)
-// Version 1.0.0 (July 9, 2017)
+// Version 0.0.1 (July 9, 2017)
 
 // Version of the webserver/website
-const version = "1.0.0 BETA";
+const version = "0.0.1 BETA";
 
 // Port for the server to run on
-const webPort = 3000;
-
-// URI of the PotgreSQL database
-const dbUri = "postgres://cdorijrhpwkonl:59d7a61726defa3de5d21a24d0541e4002b667c16d7a970431388bfeef42d65d@ec2-54-235-123-159.compute-1.amazonaws.com:5432/dov29q0cnq2q5";
+var webPort = 3000;
+if (process.env.PORT) {
+    webPort = process.env.PORT;
+}
 
 // Port that the database is running on
 const dbPort = 5432;
@@ -20,12 +20,9 @@ const dbPort = 5432;
 // The name of the database
 const dbName = 'vpfit';
 
-var dev = true;
-var db = "";
-if (dev) {
-    db = 'postgres://localhost:'+ dbPort +'/' + dbName;
-} else {
-    db = 'postgres://cdorijrhpwkonl:59d7a61726defa3de5d21a24d0541e4002b667c16d7a970431388bfeef42d65d@ec2-54-235-123-159.compute-1.amazonaws.com:5432/dov29q0cnq2q5';
+var db = 'postgres://localhost:'+ dbPort +'/' + dbName;
+if (process.env.DATABASE_URL) {
+    db = process.env.DATABASE_URL;
 }
 
 // Database configuration options
@@ -40,6 +37,7 @@ const dbOptions = {
 // NOTE: If these are changed, then you will also need to update the
 // AuthService within the AngularJS frontend, within /public/js/app.js (to
 // include the new Base64 encoding of these objects -> id:secret)
+// Happens to be: dnBmaXR3ZWJhcHA6SkJVWTlWRTY5MjQzQllDOTAyNDM4N0hHVlkzQVFGSw==
 const client_id = "vpfitwebapp";
 const client_secret = "JBUY9VE69243BYC9024387HGVY3AQFK";
 
@@ -52,7 +50,6 @@ module.exports = {
     banner: ascii_banner,
     webPort: webPort,
     dbName: dbName,
-    dbUri: dbUri,
     dbPort: dbPort,
     dbOptions: dbOptions,
     db: db,

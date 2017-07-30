@@ -1,7 +1,7 @@
-// Welcome to the entrance point of the VP Assistant Backend!
+// Welcome to the entrance point of the VP Fitness Backend!
 //
 // Written by Aaron Vontell (vontell)
-// Version 1.0.0 (July 9, 2017)
+// Version 0.0.1 (July 9, 2017)
 
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
@@ -9,6 +9,7 @@
 //      express - the actual web framework
 //      ./util/vplog - used for web logging
 //      ./api - endpoints for data manipulation
+//      ./apis - endpoints for data manipulation (protected)
 //      body-parser - used for body parsing...
 //      oauth2-server - authentication server implementation using OAuth 2.0
 //      ./vpdb - database methods
@@ -17,6 +18,7 @@ const c           = require('./constants')
 const express     = require('express')
 const vplog       = require('./util/vplog')
 const api         = require('./api')
+const apis        = require('./apis')
 const bodyParser  = require('body-parser')
 const oauthServer = require('oauth2-server');
 const db          = require('./vpdb');
@@ -52,8 +54,11 @@ app.get('/oauth/validate', app.oauth.authorise(), function(req, res) {
 
 // BASIC ROUTING --------------------------------------------------------------
 
-// Use the api!
+// Use the api's!
 app.use("/api", api);
+
+// The endpoints in "apis" requires authentication
+app.use("/apis", app.oauth.authorise(), apis);
 
 // Some error handling
 app.use(app.oauth.errorHandler());
