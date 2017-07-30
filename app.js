@@ -1,7 +1,7 @@
-// Welcome to the entrance point of the VP Assistant Backend!
+// Welcome to the entrance point of the VP Fitness Backend!
 //
 // Written by Aaron Vontell (vontell)
-// Version 1.0.0 (July 9, 2017)
+// Version 0.0.1 (July 9, 2017)
 
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
@@ -56,6 +56,8 @@ app.get('/oauth/validate', app.oauth.authorise(), function(req, res) {
 
 // Use the api's!
 app.use("/api", api);
+
+// The endpoints in "apis" requires authentication
 app.use("/apis", app.oauth.authorise(), apis);
 
 // Some error handling

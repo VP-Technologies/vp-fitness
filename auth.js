@@ -3,7 +3,7 @@
 // /master/examples/postgresql/model.js
 //
 // Written by Aaron Vontell
-// Version 1.0.0 (July 26, 2017)
+// Version 0.0.1 (July 26, 2017)
 
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing

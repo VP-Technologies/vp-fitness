@@ -2,7 +2,7 @@
 // is a PostgreSQL database.
 //
 // Written by Aaron Vontell (vontell)
-// Version 1.0.0 (July 23, 2017)
+// Version 0.0.1 (July 23, 2017)
 
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
@@ -267,21 +267,21 @@ var trimChar = function(origString, charToTrim) {
 };
 
 function updateQuery (table, where, id, cols) {
-  // Setup static beginning of query
-  var query = ['UPDATE ' + table];
-  query.push('SET');
+    // Setup static beginning of query
+    var query = ['UPDATE ' + table];
+    query.push('SET');
 
-  // Create another array storing each set command
-  // and assigning a number value for parameterized query
-  var set = [];
-  Object.keys(cols).forEach(function (key, i) {
-    set.push(key + ' = ${' + key + '}'); 
-  });
-  query.push(set.join(', '));
+    // Create another array storing each set command
+    // and assigning a number value for parameterized query
+    var set = [];
+    Object.keys(cols).forEach(function (key, i) {
+        set.push(key + ' = ${' + key + '}'); 
+    });
+    query.push(set.join(', '));
 
-  // Add the WHERE statement to look up by id
-  query.push('WHERE ' + where + ' = \'' + id + "\'");
+    // Add the WHERE statement to look up by id
+    query.push('WHERE ' + where + ' = \'' + id + "\'");
 
-  // Return a complete query string
-  return query.join(' ');
+    // Return a complete query string
+    return query.join(' ');
 }

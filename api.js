@@ -1,13 +1,8 @@
-// This file contains the unprotected api endpoints for the VP app
+// This file contains the unprotected api endpoints for the VP fitness app
 //
 // Written by Aaron Vontell (vontell)
-// Version 1.0.0 (July 26, 2017)
+// Version 0.0.1 (July 26, 2017)
 
-// MODULE DEPS ----------------------------------------------------------------
-// Incorporate all of our modules needed to run this thing
-//      ./constants - ports, naming, urls, logos, etc... Found in constants.js
-//      express - the actual web framework
-//      ./vpdb - code to access the db using pg-promise
 // MODULE DEPS ----------------------------------------------------------------
 // Incorporate all of our modules needed to run this thing
 //      ./constants - ports, naming, urls, logos, etc... Found in constants.js

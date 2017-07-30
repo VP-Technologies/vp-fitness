@@ -2,7 +2,7 @@
 // the functions to print information when the server starts.
 //
 // Written by Aaron Vontell (vontell)
-// Version 1.0.0
+// Version 0.0.1
 
 var winston = require('winston');
 var clc     = require('cli-color');

@@ -1,0 +1,486 @@
+{
+	"variables": [],
+	"info": {
+		"name": "VP Fitness",
+		"_postman_id": "162a94d4-3395-2aa4-d9a3-d3da69c8845f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"url": "localhost:3000/api/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "vontell",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "vontell@mit.edu",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Aaron Vontell",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "thisistest",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"accessToken\", jsonData.access_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:3000/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic {{BearerToken}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "vontell",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "thisistest",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Receives the token"
+			},
+			"response": []
+		},
+		{
+			"name": "Validate",
+			"request": {
+				"url": "localhost:3000/oauth/validate",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Ensures that the user is authenticated"
+			},
+			"response": []
+		},
+		{
+			"name": "Get This User",
+			"request": {
+				"url": "localhost:3000/apis/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"url": "localhost:3000/api/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						"{",
+						"\n",
+						"\t",
+						"\"",
+						"t",
+						"i",
+						"t",
+						"l",
+						"e",
+						"\"",
+						":",
+						" ",
+						"\"",
+						"S",
+						"m",
+						"a",
+						"s",
+						"h",
+						" ",
+						"T",
+						"o",
+						"u",
+						"r",
+						"n",
+						"a",
+						"m",
+						"e",
+						"n",
+						"t",
+						"\"",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"h",
+						"o",
+						"s",
+						"t",
+						"\"",
+						":",
+						" ",
+						"\"",
+						"J",
+						"e",
+						"s",
+						"u",
+						"s",
+						" ",
+						"C",
+						"o",
+						"r",
+						"o",
+						"n",
+						"a",
+						"\"",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"r",
+						"o",
+						"o",
+						"m",
+						"\"",
+						":",
+						" ",
+						"\"",
+						"P",
+						"a",
+						"r",
+						"t",
+						"y",
+						" ",
+						"R",
+						"o",
+						"o",
+						"m",
+						"\"",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"s",
+						"e",
+						"c",
+						"t",
+						"i",
+						"o",
+						"n",
+						"\"",
+						":",
+						" ",
+						"\"",
+						"2",
+						"A",
+						"\"",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"d",
+						"o",
+						"r",
+						"m",
+						"E",
+						"v",
+						"e",
+						"n",
+						"t",
+						"\"",
+						":",
+						" ",
+						"t",
+						"r",
+						"u",
+						"e",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"s",
+						"t",
+						"a",
+						"r",
+						"t",
+						"\"",
+						":",
+						" ",
+						"\"",
+						"7",
+						":",
+						"0",
+						"0",
+						"p",
+						"m",
+						"\"",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"e",
+						"n",
+						"d",
+						"\"",
+						":",
+						" ",
+						"\"",
+						"1",
+						"0",
+						":",
+						"3",
+						"0",
+						"p",
+						"m",
+						"\"",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"t",
+						"y",
+						"p",
+						"e",
+						"\"",
+						":",
+						" ",
+						"3",
+						",",
+						"\n",
+						"\t",
+						"\"",
+						"c",
+						"o",
+						"u",
+						"n",
+						"t",
+						"\"",
+						":",
+						" ",
+						"1",
+						"5",
+						"\n",
+						"}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update This User",
+			"request": {
+				"url": "localhost:3000/apis/users",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "active",
+							"value": "false",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Info",
+			"request": {
+				"url": "localhost:3000/apis/users/info",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "age",
+							"value": "21",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "160",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "height",
+							"value": "67",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "goal_weight",
+							"value": "130",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "difficulty",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "equipment",
+							"value": "{1,5,2,12}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Info",
+			"request": {
+				"url": "localhost:3000/apis/users/info",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Info",
+			"request": {
+				"url": "localhost:3000/apis/users/info",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "height",
+							"value": "45",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
