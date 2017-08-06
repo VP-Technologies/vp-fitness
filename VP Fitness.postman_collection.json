@@ -426,6 +426,12 @@
 							"value": "{1,5,2,12}",
 							"description": "",
 							"type": "text"
+						},
+						{
+							"key": "goal",
+							"value": "2",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
@@ -471,8 +477,35 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "height",
-							"value": "45",
+							"key": "goal",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Query",
+			"request": {
+				"url": "localhost:3000/api/validate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "new_username",
+							"value": "vontell",
 							"description": "",
 							"type": "text"
 						}

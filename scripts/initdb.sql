@@ -24,6 +24,7 @@ CREATE TABLE userinfo (
   weight DECIMAL,
   height DECIMAL,
   goal_weight DECIMAL,
+  goal INTEGER,
   difficulty INTEGER,
   equipment INTEGER[]
 );
