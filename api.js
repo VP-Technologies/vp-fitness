@@ -22,4 +22,7 @@ var app = module.exports.app;
 router.get('/users', db.getAllUsers);
 router.post('/users', db.createUser);
 
+// Validation routes
+router.post('/validate', db.validateQuery);
+
 module.exports = router;

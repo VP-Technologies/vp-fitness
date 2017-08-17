@@ -112,8 +112,8 @@ function createUserInfo(req, res, next) {
                 return next();
             }
             else {
-                db.none('insert into userinfo(age, weight, height, goal_weight, difficulty, equipment, username)' +
-                'values(${age}, ${weight}, ${height}, ${goal_weight}, ${difficulty}, ${equipment}, ${username})',
+                db.none('insert into userinfo(age, weight, height, goal_weight, goal, difficulty, equipment, username)' +
+                'values(${age}, ${weight}, ${height}, ${goal_weight}, ${goal}, ${difficulty}, ${equipment}, ${username})',
                 req.body)
                 .then(function () {
                     res.status(200)
@@ -242,6 +242,57 @@ function updateThisUser(req, res, next) {
     
 }
 
+// Returns whether or not the first known value it finds in the request
+// body is valid
+function validateQuery(req, res, next) {
+    
+    // Checks in this order:
+    //  - new_username - checks that 1) it does not exist, and 2) it is a valid length
+    
+    if (req.body.new_username) {
+        
+        if (req.body.new_username.length <= 2) {
+            res.status(400)
+            .json({
+                status: "failure",
+                message: "Invalid username; must be 3 or more characters."
+            });
+        }
+        
+        db.any('select * from users where username=${new_username}', req.body)
+            .then(function (data) {
+                if (data.length > 0) {
+                    res.status(400)
+                    .json({
+                        status: "failure",
+                        message: "That username is already taken."
+                    });
+                } else {
+                    res.status(200)
+                    .json({
+                        status: "success",
+                        data: "Valid username."
+                    });
+                }
+                
+            })
+            .catch(function (err) {
+                console.log(err)
+                res.status(500)
+                    .json({
+                        status: "failure",
+                        data: "There was an error; please try again later."
+                    });
+            });
+    } else {
+        res.status(500)
+        .json({
+            status: "failure",
+            data: "No query to validate."
+        });
+    }
+}
+
 // Export for use in other modules
 module.exports = {
     getAllUsers: getAllUsers,
@@ -251,7 +302,8 @@ module.exports = {
     getUserInfo: getUserInfo,
     updateUserInfo: updateUserInfo,
     getThisUser: getThisUser,
-    updateThisUser: updateThisUser
+    updateThisUser: updateThisUser,
+    validateQuery: validateQuery
 };
 
 // Helper functions
