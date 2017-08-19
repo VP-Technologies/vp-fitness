@@ -71,10 +71,11 @@ function createUser(req, res, next) {
             });
         })
         .catch(function (err) {
+            console.log(err);
             res.status(500)
             .json({
                 status: 'failure',
-                message: 'Failure to create user; did you forget to set the email, username, or name?'
+                message: 'Failure to create user; did you forget to enter a valid email, username, or name?'
             });
             //return next(err);
         });
