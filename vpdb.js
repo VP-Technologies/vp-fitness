@@ -113,8 +113,8 @@ function createUserInfo(req, res, next) {
                 return next();
             }
             else {
-                db.none('insert into userinfo(age, weight, height, goal_weight, goal, difficulty, equipment, username)' +
-                'values(${age}, ${weight}, ${height}, ${goal_weight}, ${goal}, ${difficulty}, ${equipment}, ${username})',
+                db.none('insert into userinfo(age, weight, height, goal, difficulty, equipment, username)' +
+                'values(${age}, ${weight}, ${height}, ${goal}, ${difficulty}, ${equipment}, ${username})',
                 req.body)
                 .then(function () {
                     res.status(200)
@@ -124,6 +124,7 @@ function createUserInfo(req, res, next) {
                     });
                 })
                 .catch(function (err) {
+                    console.log(err)
                     return next(err);
                 });
             }
